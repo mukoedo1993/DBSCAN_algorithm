@@ -11,7 +11,6 @@ Extra References:
 #Ubuntu terminal:
 rm -r build
 mkdir build && cd build && cmake ..; cmake --build . --config Release
-#cmake ..; cmake --build . --config Release
 #Wait for a few minutes for the make command to finish.
 #Run:
 ./dbscan_cluster ../data <epsilon> <minimum_points> #LINE 7

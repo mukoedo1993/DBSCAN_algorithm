@@ -33,8 +33,8 @@ int DBSCAN::expandCluster(Point point, int clusterID)
         vector<int>::iterator iterSeeds;
         for( iterSeeds = clusterSeeds.begin(); iterSeeds != clusterSeeds.end(); ++iterSeeds)
         {
-            m_points.at(*iterSeeds).clusterID = clusterID;
-            if (m_points.at(*iterSeeds).x == point.x && m_points.at(*iterSeeds).y == point.y  )
+            m_points[*iterSeeds].clusterID = clusterID;
+            if (m_points[*iterSeeds].x == point.x && m_points[*iterSeeds].y == point.y  )
             {
                 indexCorePoint = index;
             }
@@ -44,21 +44,21 @@ int DBSCAN::expandCluster(Point point, int clusterID)
 
         for( vector<int>::size_type i = 0, n = clusterSeeds.size(); i < n; ++i )
         {
-            vector<int> clusterNeighors = calculateCluster(m_points.at(clusterSeeds[i]));
+            vector<int> clusterNeighors = calculateCluster(m_points[clusterSeeds[i]]);
 
             if ( clusterNeighors.size() >= m_minPoints )
             {
                 vector<int>::iterator iterNeighors;
                 for ( iterNeighors = clusterNeighors.begin(); iterNeighors != clusterNeighors.end(); ++iterNeighors )
                 {
-                    if ( m_points.at(*iterNeighors).clusterID == UNCLASSIFIED || m_points.at(*iterNeighors).clusterID == NOISE )
+                    if ( m_points[*iterNeighors].clusterID == UNCLASSIFIED || m_points[*iterNeighors].clusterID == NOISE )
                     {
-                        if ( m_points.at(*iterNeighors).clusterID == UNCLASSIFIED )
+                        if ( m_points[*iterNeighors].clusterID == UNCLASSIFIED )
                         {
                             clusterSeeds.push_back(*iterNeighors);
                             n = clusterSeeds.size();
                         }
-                        m_points.at(*iterNeighors).clusterID = clusterID;
+                        m_points[*iterNeighors].clusterID = clusterID;
                     }
                 }
             }

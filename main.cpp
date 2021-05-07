@@ -120,58 +120,30 @@ int main(int argc, char** argv)
         std::ifstream file(dataset_name);
         dlib::matrix<DataType> data;
         file >> data;
-
-        //auto inputs = dlib::subm(data, 0, 1, data.nr(), 2);
-        //auto labels = dlib::subm(data, 0, 3, data.nr(), 1);
         vector<Point> points;
         for ( int i = 0; i < data.nr(); i++){
             points.emplace_back(data(i, 1), data(i, 2), UNCLASSIFIED);
-            //points.back().clusterID = UNCLASSIFIED;
         }
 
         Clusters clusters;
-
         DBSCAN ds(minimum_points, epsilon, points);
- 
         ds.run();
-
         for (const auto& point : ds.m_points){
             clusters[point.clusterID].first.push_back(point.x);
             clusters[point.clusterID].second.push_back(point.y);
             std::cout << point.clusterID << point.x << point.y << std::endl;
         }
-
-    
-        
-
         std::cout << " file name is: "<< dataset_name << "\n\n\n";
-        //printResults(ds.m_points, ds.getTotalPointSize());  
+        //printResults(ds.m_points, ds.getTotalPointSize());  //for debug here
         std::cout << "\n\n\n";
         std::cout <<__LINE__ << std::endl << std::endl;
         PlotClusters(clusters, "DBSCAN clustering", "../results/" +  dataset + "-dbscans.png");
-
-
       }
       else{
         std::cerr << "Dataset file " << dataset_name << "missed. Please provide in the correct form.\n";
     }
     }
-    
-
-    // read point data
-    dlib::matrix<double> mat;
-
-
-
-
-    // constructor
-   
-
-    // main loop
-    
-
-    // result of DBSCAN algorithm
-      
+    dlib::matrix<double> mat;      
     }
     else {
         std::cerr <<" Please provide the data's folder!!!\n\n";
