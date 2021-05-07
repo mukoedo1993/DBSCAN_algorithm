@@ -73,9 +73,8 @@ int DBSCAN::expandCluster(Point point, int clusterID)
 vector<int> DBSCAN::calculateCluster(const Point& point)
 {
     int index = 0;
-    vector<Point>::iterator iter;
     vector<int> clusterIndex;
-    for( iter = m_points.begin(); iter != m_points.end(); ++iter)
+    for(auto iter = m_points.cbegin(); iter != m_points.cend(); ++iter)
     {
         if ( calculateDistance(point, *iter) <= m_epsilon )
         {
