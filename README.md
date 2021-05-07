@@ -1,6 +1,6 @@
 We choose to apply our applicatons only on the first data file.
 There is not a common CPP library that contains pure DBSCAN method. So, we need 
-some extra refrences here.
+some extra refrences here. Here, we will need filesystem lib. and dlib lib. here.
 
 References:
 1: https://github.com/james-yoo/DBSCAN
