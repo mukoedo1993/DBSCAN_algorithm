@@ -20,7 +20,7 @@ const std::vector<std::string> data_names{
 };
 
 const std::vector<std::string> colors{"black", "red", "blue", "green",
-                "cyan", "yellow", "brown", "magenta"};
+                "cyan", "yellow", "brown", "magenta", "gray", "chartreuse", "honeydew"};
 
 using DataType = double;
 using Coords = std::vector<DataType>;
@@ -33,6 +33,7 @@ using Clusters = std::unordered_map<int, PointCoords>;
 void PlotClusters(const Clusters& clusters,
                  const std::string& name,
                  const std::string& file_name) {
+    
     
     plotcpp::Plot plt;
     plt.SetTerminal("png");
@@ -94,7 +95,7 @@ void printResults(vector<Point>& points, int num_points)
 {
     int i = 0;
     printf("Number of points: %u\n"
-        " x     y     z     cluster_id\n"
+        " x     y   cluster_id\n"
         "-----------------------------\n"
         , num_points);
     while (i < num_points)
@@ -129,6 +130,7 @@ int main(int argc, char** argv)
         DBSCAN ds(minimum_points, epsilon, points);
         ds.run();
         for (const auto& point : ds.m_points){
+            
             clusters[point.clusterID].first.push_back(point.x);
             clusters[point.clusterID].second.push_back(point.y);
             std::cout << point.clusterID << point.x << point.y << std::endl;

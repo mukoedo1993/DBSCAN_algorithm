@@ -1,10 +1,10 @@
 #include "dbscan.h"
-
+#include <stdexcept>
 int DBSCAN::run()
 {
     int clusterID = 1;
-    vector<Point>::iterator iter;
-    for(iter = m_points.begin(); iter != m_points.end(); ++iter)
+    //vector<Point>::iterator iter;
+    for(auto iter = m_points.cbegin(); iter != m_points.cend(); ++iter)
     {
         if ( iter->clusterID == UNCLASSIFIED )
         {
@@ -51,6 +51,8 @@ int DBSCAN::expandCluster(Point point, int clusterID)
                 vector<int>::iterator iterNeighors;
                 for ( iterNeighors = clusterNeighors.begin(); iterNeighors != clusterNeighors.end(); ++iterNeighors )
                 {
+                    if(clusterID > 10)
+                     throw std::invalid_argument("Too many clusters! Stop here!\n");
                     if ( m_points[*iterNeighors].clusterID == UNCLASSIFIED || m_points[*iterNeighors].clusterID == NOISE )
                     {
                         if ( m_points[*iterNeighors].clusterID == UNCLASSIFIED )
