@@ -11,6 +11,7 @@ References:
 #Ubuntu terminal:
 git clone https://github.com/mukoedo1993/DBSCAN_algorithm
 cd DBSCAN_algorithm
+rm -r build
 mkdir build && cd build && cmake ..; cmake --build . --config Release
 #Wait for a few minutes for the make command to finish.
 #Run:
