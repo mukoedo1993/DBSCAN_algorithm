@@ -4,7 +4,7 @@
 
 #include <dlib/clustering.h>
 #include <dlib/matrix.h>
-#include <plotcpp_clone/plotcpp/plot.h>
+#include "plot.h"
 #include <experimental/filesystem>
 #include <utility>
 #include <unordered_map>
