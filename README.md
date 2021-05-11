@@ -6,7 +6,7 @@ and gnuplot here.
 
 ## References ##
 1: https://github.com/james-yoo/DBSCAN
-(LICENSE file is included in this directory.)
+(LICENSE file is included in this directory.)</br>
 2: Kolodiazhnyi, Kirill. Hands-On Machine Learning with C++: Build, Train, and Deploy End-to-end Machine Learning and Deep Learning Pipelines. United Kingdom, Packt Publishing, 2020.
 
 ## Requirements ##
