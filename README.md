@@ -19,7 +19,7 @@ gnuplot.
 git clone https://github.com/mukoedo1993/DBSCAN_algorithm
 cd DBSCAN_algorithm
 mkdir build && cd build && cmake ..; cmake --build . --config Release
-#Wait for a few minutes for the make command to finish.
+#Wait for a few minutes.
 #Run:
 ./dbscan_cluster ../data <epsilon> <minimum_points> #LINE 7
 #e.g.: epsilon = 0.1 minimum_points = 10
