@@ -65,32 +65,7 @@ void PlotClusters(const Clusters& clusters,
     plt.EndDraw2D(draw_state);
     plt.Flush();
 }
-/*
-void readBenchmarkData(vector<Point>& points)
-{
-    // load point cloud. (We use dlib lib here)
 
-    FILE *stream;
-    stream = fopen ("benchmark_hepta.dat","ra");
-
-    unsigned int minpts, num_points, cluster, i = 0;
-    double epsilon;
-    fscanf(stream, "%u\n", &num_points);
-
-    Point *p = (Point *)calloc(num_points, sizeof(Point));
-
-    while (i < num_points)
-    {
-          fscanf(stream, "%f,%f,%f,%d\n", &(p[i].x), &(p[i].y), &(p[i].z), &cluster);
-          p[i].clusterID = UNCLASSIFIED;
-          points.push_back(p[i]);
-          ++i;
-    }
-
-    free(p);
-    fclose(stream);
-}
-*/
 void printResults(vector<Point>& points, int num_points)
 {
     int i = 0;
