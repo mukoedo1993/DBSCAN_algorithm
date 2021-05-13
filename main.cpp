@@ -9,8 +9,6 @@
 #include <utility>
 #include <unordered_map>
 namespace fs = std::experimental::filesystem;
-//#define MINIMUM_POINTS 4     // minimum number of cluster
-//#define EPSILON (0.75*0.75)  // distance for clustering, metre^2
 
 const std::vector<std::string> data_names{
     "dataset0.csv"
@@ -43,17 +41,11 @@ void PlotClusters(const Clusters& clusters,
     plt.SetYLabel("y");
     plt.SetAutoscale();
     plt.GnuplotCommand("set grid");
-    std::cout <<"\n\n\n" <<__LINE__ << std::endl;
     auto draw_state = plt.StartDraw2D<Coords::const_iterator>();
-    std::cout <<"\n\n\n" <<__LINE__ << std::endl;
     for (auto& cluster : clusters) {
-         std::cout <<"\n\n\n" <<__LINE__ << std::endl;
         std::stringstream params;
         if(cluster.first == -1) continue;
-         std::cout <<"\n\n\n" <<__LINE__ << std::endl;
-        std::cout << "lc rgb '" << colors.at(cluster.first) << "'pt 7";
         params << "lc rgb '" << colors.at(cluster.first) << "'pt 7";
-       std::cout << __LINE__ << std::endl;
         plt.AddDrawing(draw_state,
                         plotcpp::Points(
                         cluster.second.first.begin(), cluster.second.first.end(),
@@ -66,6 +58,7 @@ void PlotClusters(const Clusters& clusters,
     plt.Flush();
 }
 
+/*
 void printResults(vector<Point>& points, int num_points)
 {
     int i = 0;
@@ -82,6 +75,8 @@ void printResults(vector<Point>& points, int num_points)
           ++i;
     }
 }
+*/
+
 
 int main(int argc, char** argv)
 {    
@@ -104,16 +99,20 @@ int main(int argc, char** argv)
         Clusters clusters;
         DBSCAN ds(minimum_points, epsilon, points);
         ds.run();
+        
+        
         for (const auto& point : ds.m_points){
             
             clusters[point.clusterID].first.push_back(point.x);
             clusters[point.clusterID].second.push_back(point.y);
-            std::cout << point.clusterID << point.x << point.y << std::endl;
+            //For debug here:
+            //std::cout << point.clusterID << point.x << point.y << std::endl;
         }
-        std::cout << " file name is: "<< dataset_name << "\n\n\n";
+        
+        //std::cout << " file name is: "<< dataset_name << "\n\n\n";
         //printResults(ds.m_points, ds.getTotalPointSize());  //for debug here
-        std::cout << "\n\n\n";
-        std::cout <<__LINE__ << std::endl << std::endl;
+        //std::cout << "\n\n\n";
+        //std::cout <<__LINE__ << std::endl << std::endl;
         PlotClusters(clusters, "DBSCAN clustering", "../results/" +  dataset + "-dbscans.png");
       }
       else{

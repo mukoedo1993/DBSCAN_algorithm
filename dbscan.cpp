@@ -29,7 +29,6 @@ int DBSCAN::expandCluster(Point point, int clusterID)
     else
     {
         int index = 0, indexCorePoint = 0;
-        vector<int>::iterator iterSeeds;
         for(auto iterSeeds = clusterSeeds.cbegin(); iterSeeds != clusterSeeds.cend(); ++iterSeeds)
         {
             m_points[*iterSeeds].clusterID = clusterID;
