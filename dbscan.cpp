@@ -51,7 +51,7 @@ int DBSCAN::expandCluster(Point point, int clusterID)
                 //vector<int>::iterator iterNeighors;
                 for (
                     auto //!!!!!!
-                     iterNeighors = clusterNeighors.begin(); iterNeighors != clusterNeighors.end(); ++iterNeighors )
+                     iterNeighors = clusterNeighors.cbegin(); iterNeighors != clusterNeighors.cend(); ++iterNeighors )
                 {
                     if(clusterID > 10)
                      throw std::invalid_argument("Too many clusters! Stop here!\n");
