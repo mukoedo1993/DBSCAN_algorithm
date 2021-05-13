@@ -3,7 +3,6 @@
 int DBSCAN::run()
 {
     int clusterID = 1;
-    //vector<Point>::iterator iter;
     for(auto iter = m_points.cbegin(); iter != m_points.cend(); ++iter)
     {
         if ( iter->clusterID == UNCLASSIFIED )
