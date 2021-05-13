@@ -31,7 +31,7 @@ int DBSCAN::expandCluster(Point point, int clusterID)
     {
         int index = 0, indexCorePoint = 0;
         vector<int>::iterator iterSeeds;
-        for( iterSeeds = clusterSeeds.begin(); iterSeeds != clusterSeeds.end(); ++iterSeeds)
+        for(auto iterSeeds = clusterSeeds.cbegin(); iterSeeds != clusterSeeds.cend(); ++iterSeeds)
         {
             m_points[*iterSeeds].clusterID = clusterID;
             if (m_points[*iterSeeds].x == point.x && m_points[*iterSeeds].y == point.y  )
