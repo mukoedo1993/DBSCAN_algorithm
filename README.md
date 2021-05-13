@@ -21,7 +21,7 @@ cd DBSCAN_algorithm
 mkdir build && cd build && cmake ..; cmake --build . --config Release
 #Wait for a few minutes.
 #Run:
-./dbscan_cluster ../data <epsilon> <minimum_points> #LINE 7
+./dbscan_cluster ../data <epsilon> <minimum_points>
 #e.g.: epsilon = 0.1 minimum_points = 10
 # Then, just follow the instructions.
 ```
