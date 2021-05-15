@@ -13,7 +13,7 @@ and gnuplot here.
 dlib lib.
 gnuplot.
 
-###
+## How to do? ##
 ```
 #Ubuntu terminal:
 git clone https://github.com/mukoedo1993/DBSCAN_algorithm
