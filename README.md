@@ -26,6 +26,7 @@ mkdir build && cd build && cmake ..; cmake --build . --config Release
 # Then, just follow the instructions.
 ```
 <br>
-## Sample ##
+
+##  Sample  ##<br>
 
 ![painted_image](results/dataset0.csv-dbscans.png)
