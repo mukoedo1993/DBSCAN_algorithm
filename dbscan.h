@@ -16,7 +16,7 @@ using namespace std;
 
 struct Point
 {
-  Point(float x_, float y_, int clusterID_ ): x(x_), y(y_), clusterID(clusterID_)
+  Point(const float x_, const  float y_, const int clusterID_ ): x(x_), y(y_), clusterID(clusterID_)
   {
 
   }
@@ -32,7 +32,7 @@ public:
 
     ~DBSCAN() = default;
 
-    void run() ;
+    void run();
     const vector<int> calculateCluster(const Point& point) const;
     int expandCluster(Point point, const int clusterID);
     inline double calculateDistance(const Point& pointCore, const Point& pointTarget) const;
