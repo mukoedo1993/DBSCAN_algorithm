@@ -26,7 +26,7 @@ struct Point
 
 class DBSCAN {
 public:    
-    DBSCAN(unsigned int minPts, float eps, const vector<Point>& points):
+    DBSCAN(const unsigned int minPts, const float eps, const vector<Point>& points):
     m_points(points), m_pointSize(points.size()), m_minPoints(minPts), m_epsilon(eps)
     {
         //m_minPoints = minPts;
@@ -46,9 +46,9 @@ public:
     int getEpsilonSize() const {return m_epsilon;}
     vector<Point> m_points;
 private:
-    unsigned int m_pointSize;
-    unsigned int m_minPoints;
-    float m_epsilon;
+    const unsigned int m_pointSize;
+    const unsigned int m_minPoints;
+    const float m_epsilon;
 };
 
 #endif // DBSCAN_H
