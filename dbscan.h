@@ -28,12 +28,8 @@ class DBSCAN {
 public:    
     DBSCAN(const unsigned int minPts, const float eps, const vector<Point>& points):
     m_points(points), m_pointSize(points.size()), m_minPoints(minPts), m_epsilon(eps)
-    {
-        //m_minPoints = minPts;
-        //m_epsilon = eps;
-        //m_points = points;
-        //m_pointSize = points.size();
-    }
+    {}
+    
     ~DBSCAN() = default;
 
     void run() ;
