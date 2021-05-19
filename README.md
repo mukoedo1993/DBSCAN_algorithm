@@ -13,7 +13,7 @@ and gnuplot here.
 dlib lib.
 gnuplot.
 
-###
+## How to do? ##
 ```
 #Ubuntu terminal:
 git clone https://github.com/mukoedo1993/DBSCAN_algorithm
@@ -25,3 +25,8 @@ mkdir build && cd build && cmake ..; cmake --build . --config Release
 #e.g.: target_directory = ../data epsilon = 0.1 minimum_points = 10
 # Then, just follow the instructions.
 ```
+<br>
+
+##  Sample  ##
+
+![painted_image](results/dataset0.csv-dbscans.png)
