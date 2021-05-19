@@ -29,11 +29,11 @@ public:
     DBSCAN(const unsigned int minPts, const float eps, const vector<Point>& points):
     m_points(points), m_pointSize(points.size()), m_minPoints(minPts), m_epsilon(eps)
     {}
-    
+
     ~DBSCAN() = default;
 
     void run() ;
-    vector<int> calculateCluster(const Point& point) const;
+    const vector<int> calculateCluster(const Point& point) const;
     int expandCluster(Point point, const int clusterID);
     inline double calculateDistance(const Point& pointCore, const Point& pointTarget) const;
 

@@ -67,7 +67,7 @@ int DBSCAN::expandCluster(Point point, const int clusterID)
     }
 }
 
-vector<int> DBSCAN::calculateCluster(const Point& point)const
+const vector<int> DBSCAN::calculateCluster(const Point& point)const
 {
     int index = 0;
     vector<int> clusterIndex;
