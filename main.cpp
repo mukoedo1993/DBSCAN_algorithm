@@ -42,14 +42,14 @@ void PlotClusters(const Clusters& clusters,
     plt.SetAutoscale();
     plt.GnuplotCommand("set grid");
     auto draw_state = plt.StartDraw2D<Coords::const_iterator>();
-    for (auto& cluster : clusters) {
+    for (const auto& cluster : clusters) {
         std::stringstream params;
         if(cluster.first == -1) continue;
-        params << "lc rgb '" << colors.at(cluster.first) << "'pt 7";
+        params << "lc rgb '" << colors[cluster.first] << "'pt 7";
         plt.AddDrawing(draw_state,
                         plotcpp::Points(
-                        cluster.second.first.begin(), cluster.second.first.end(),
-                        cluster.second.second.begin(),
+                        cluster.second.first.cbegin(), cluster.second.first.cend(),
+                        cluster.second.second.cbegin(),
                         std::to_string(static_cast<size_t>(cluster.first)) + " cls", params.str()));    
                         
     }
@@ -58,6 +58,7 @@ void PlotClusters(const Clusters& clusters,
     plt.Flush();
 }
 
+//For debug here:
 /*
 void printResults(vector<Point>& points, int num_points)
 {
@@ -82,8 +83,8 @@ int main(int argc, char** argv)
 {    
     if(argc > 3){
     auto base_dir = fs::path(argv[1]);
-    double epsilon = atof(argv[2]);
-    double minimum_points = atoi(argv[3]);
+    const double epsilon = atof(argv[2]);
+    const double minimum_points = atoi(argv[3]);
     for(auto & dataset : data_names ) {
         auto dataset_name = base_dir / dataset;
 
@@ -107,19 +108,18 @@ int main(int argc, char** argv)
             clusters[point.clusterID].second.push_back(point.y);
             //For debug here:
             //std::cout << point.clusterID << point.x << point.y << std::endl;
-        }
+         }
         
         //std::cout << " file name is: "<< dataset_name << "\n\n\n";
         //printResults(ds.m_points, ds.getTotalPointSize());  //for debug here
         //std::cout << "\n\n\n";
         //std::cout <<__LINE__ << std::endl << std::endl;
         PlotClusters(clusters, "DBSCAN clustering", "../results/" +  dataset + "-dbscans.png");
-      }
+       }
       else{
         std::cerr << "Dataset file " << dataset_name << "missed. Please provide in the correct form.\n";
-    }
-    }
-    dlib::matrix<double> mat;      
+      }
+     }      
     }
     else {
         std::cerr <<" Please provide the data's folder!!!\n\n";
