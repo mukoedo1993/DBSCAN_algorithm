@@ -1,6 +1,6 @@
 #include "dbscan.h"
 #include <stdexcept>
-int DBSCAN::run()
+void DBSCAN::run()
 {
     int clusterID = 1;
     for(auto iter = m_points.cbegin(); iter != m_points.cend(); ++iter)
@@ -14,7 +14,6 @@ int DBSCAN::run()
         }
     }
 
-    return 0;
 }
 
 int DBSCAN::expandCluster(Point point, const int clusterID)
@@ -42,7 +41,7 @@ int DBSCAN::expandCluster(Point point, const int clusterID)
 
         for( vector<int>::size_type i = 0, n = clusterSeeds.size(); i < n; ++i )
         {
-            vector<int> clusterNeighors = calculateCluster(m_points[clusterSeeds[i]]);
+           const vector<int> clusterNeighors = calculateCluster(m_points[clusterSeeds[i]]);
 
             if ( clusterNeighors.size() >= m_minPoints )
             {
@@ -68,7 +67,7 @@ int DBSCAN::expandCluster(Point point, const int clusterID)
     }
 }
 
-vector<int> DBSCAN::calculateCluster(const Point& point)
+vector<int> DBSCAN::calculateCluster(const Point& point)const
 {
     int index = 0;
     vector<int> clusterIndex;
@@ -83,7 +82,7 @@ vector<int> DBSCAN::calculateCluster(const Point& point)
     return clusterIndex;
 }
 
-inline double DBSCAN::calculateDistance(const Point& pointCore,const Point& pointTarget )
+inline double DBSCAN::calculateDistance(const Point& pointCore,const Point& pointTarget )const
 {
     return pow(pointCore.x - pointTarget.x,2) + pow(pointCore.y - pointTarget.y,2);
 }
